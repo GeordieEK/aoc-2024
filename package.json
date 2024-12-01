@@ -1,5 +1,6 @@
 {
   "name": "aoc-2024",
+  "type": "module",
   "scripts": {
     "start": "ts-node",
     "dev": "node --watch",
