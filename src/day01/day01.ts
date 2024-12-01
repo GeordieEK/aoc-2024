@@ -3,10 +3,10 @@ import { createReadLineInterface } from "../utils/utils.ts";
 // Problem from: https://adventofcode.com/2024/day/1
 const INPUT_FILE = "src/day01/day01.input";
 
-async function calculateTotalDistance(
+export function calculateTotalDistance(
   list1: number[],
   list2: number[],
-): Promise<number> {
+): number {
   const sortedList1 = [...list1].sort();
   const sortedList2 = [...list2].sort();
   return sortedList1.reduce(
@@ -15,10 +15,10 @@ async function calculateTotalDistance(
   );
 }
 
-async function calculateSimilarityScore(
+export function calculateSimilarityScore(
   list1: number[],
   list2: number[],
-): Promise<number> {
+): number {
   // Build a count of num times a value appears in list2
   const freqMap: Record<number, number> = {};
   for (const num of list2) {
@@ -51,15 +51,20 @@ async function main() {
     list1.push(parseInt(lineArr[0]));
     list2.push(parseInt(lineArr[1]));
   }
-  const totalDistance = await calculateTotalDistance(list1, list2);
+  const totalDistance = calculateTotalDistance(list1, list2);
   // NOTE: This is the answer to part 1!
   console.log("Total distance:", totalDistance);
 
   // Part 2 wants us to get a similarity score by checking num appearances of items in list1 in list2
   // and multiplying their value by that count number
-  const similarityScore = await calculateSimilarityScore(list1, list2);
+  const similarityScore = calculateSimilarityScore(list1, list2);
   // NOTE: This is the answer to part 2!
   console.log("Similarity score:", similarityScore);
 }
 
-main();
+// Only run main() if this file is executed directly
+if (require.main === module) {
+  main();
+}
+
+export { main }; // Allow importing main for testing, if needed
