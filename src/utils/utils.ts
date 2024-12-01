@@ -1,5 +1,6 @@
 import { readFile, open } from "node:fs/promises";
 import { createInterface } from "node:readline/promises";
+import { createReadStream } from "node:fs";
 
 // Reads from file using fs promises
 export async function readFromFile(filePath: string) {
@@ -15,15 +16,13 @@ export async function readFromFile(filePath: string) {
 }
 
 // Returns a readLine interface for a given file
-export async function readFileLineByLine(filePath: string) {
-  const fileHandle = await open(filePath);
-  // Create a stream from some character device.
-  const fileStream = fileHandle.createReadStream({ autoClose: true });
+export async function createReadLineInterface(
+  filePath: string,
+): Promise<AsyncIterable<string>> {
+  const fileStream = createReadStream(filePath, { encoding: "utf8" });
 
-  const readLineInterface = createInterface({
+  return createInterface({
     input: fileStream,
     crlfDelay: Infinity,
   });
-
-  return readLineInterface;
 }
