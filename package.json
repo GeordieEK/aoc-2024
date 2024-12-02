@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node --no-warnings --loader ts-node/esm",
     "dev": "node --watch",
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
