@@ -1,7 +1,6 @@
 import { removeLevel, checkSafety } from "./day02.ts";
 
-// test cases for removelevel
-describe("removelevel", () => {
+describe("removeLevel", () => {
   test("should return false for the given example", () => {
     expect(
       removeLevel(["56", "59", "57", "55", "55", "54", "52", "48"], 1),
@@ -13,8 +12,7 @@ describe("removelevel", () => {
   });
 });
 
-// test cases for checksafety
-describe("checksafety", () => {
+describe("checkSafety", () => {
   test("should handle provided examples correctly", () => {
     expect(checkSafety(["56", "59", "57", "55", "55", "54", "52", "48"])).toBe(
       false,
