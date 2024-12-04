@@ -1,3 +1,5 @@
+# Ignore input files (AoC request)
+*.input
 # Logs
 logs
 *.log
